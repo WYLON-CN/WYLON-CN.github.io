@@ -3,35 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- 新增viewport，适配手机端 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WYLON-CN</title>
     <style>
         body {
             background-color: lightpink;
+            /* 统一页面内边距，避免内容贴边 */
+            padding: 20px;
+            margin: 0;
         }
         p {
             font-size: 24px;
+            /* 统一字体，避免不同浏览器显示差异 */
+            font-family: "Microsoft YaHei", sans-serif;
         }
-        marquee {
+        /* 用CSS动画实现跑马灯，替代废弃的marquee标签 */
+        .marquee {
             font-size: 45px;
             font-family: "Microsoft YaHei";
-            text-align: left;
+            /* 固定宽度，让文字超出后滚动 */
+            width: 100%;
+            /* 隐藏超出的文字 */
+            overflow: hidden;
+            /* 让文字单行显示 */
+            white-space: nowrap;
+            /* 动画：名称marqueeMove，时长10秒，线性，无限循环 */
+            animation: marqueeMove 10s linear infinite;
         }
-
+        /* 定义跑马灯动画 */
+        @keyframes marqueeMove {
+            /* 初始位置：文字在右侧外部 */
+            0% { transform: translateX(100%); }
+            /* 结束位置：文字滑到左侧外部 */
+            100% { transform: translateX(-100%); }
+        }
         a {
             text-decoration: none;
+            /* 给链接加颜色，更醒目 */
+            color: #0066cc;
+        }
+        a:hover {
+            /* 鼠标悬浮时加下划线，提升交互体验 */
+            text-decoration: underline;
+        }
+        span {
+            font-size: 18px;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        img {
+            /* 限制图片最大宽度，适配手机 */
+            max-width: 300px;
+            height: auto;
+            margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
-    <marquee>欢迎光临我的小屋</marquee>
+    <!-- 用div替代marquee，添加自定义类名 -->
+    <div class="marquee">欢迎光临我的小屋</div>
     <p>我将在这里开启我的前端之路！逝者如斯夫，不舍昼夜！</p>
     <a href="https://github.com/WYLON-CN/WYLON-CN.github.io" onclick="window.open(this.href, '_blank'); return false;">MyGitHub</a>
     <span> WeChat扫码添加好友:</span><br>
-    <img src="./myWeChatcode.jpg" alt="图片加载失败！" height="300px">
+    <img src="./myWeChatcode.jpg" alt="图片加载失败！请检查图片路径是否正确">
     <br>
 </body>
 
-
 </html>
-
